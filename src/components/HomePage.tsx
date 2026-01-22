@@ -33,56 +33,56 @@ const heroSlides = [
 const recommendedBooks = [
   {
     id: "1",
-    title: "หลักการเขียนโปรแกรม Python",
-    author: "ดร.สมชาย วงศ์ใหญ่",
-    category: "005 - วิทยาการคอมพิวเตอร์",
+    title: "วันเวลาใน 4 ทวีป",
+    author: "เขมานันทะ",
+    category: "150-152.41",
     image:
-      "https://images.unsplash.com/photo-1725869973689-425c74f79a48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZXh0Ym9vayUyMHNjaWVuY2V8ZW58MXx8fHwxNzYyNDI1NjgzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://satapornbooks.com/file/product-inside/44y2a4p27414q5o4p5",
     promotion: true,
   },
   {
     id: "2",
-    title: "วรรณคดีไทยสมัยอยุธยา",
-    author: "ผศ.สมหญิง ใจดี",
-    category: "895 - วรรณคดีไทย",
+    title: "ทำทุกอย่างให้สุด Ritz",
+    author: "นศ.พ.เรืองฤทธิ์ ศิริพานิช",
+    category: "170-190",
     image:
-      "https://images.unsplash.com/photo-1758796629109-4f38e9374f45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib29rJTIwY292ZXIlMjBmaWN0aW9ufGVufDF8fHx8MTc2MjQzNzIyMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://static.getbookie.com/product/image/2024/01/full/1705042751-1778.9873046875-bc059df3-b649-40c4-86b4-fd7d119346d7.jpeg",
     promotion: true,
   },
   {
     id: "3",
-    title: "คณิตศาสตร์เพื่อการแข่งขัน",
-    author: "อ.วิชัย สมบูรณ์",
-    category: "510 - คณิตศาสตร์",
+    title: "Short Note ภาษาไทย ติวให้ได้เต็ม",
+    author: "นิทัศย์ ยศธสาร (อ.แจ๊กกี้)",
+    category: "495.91",
     image:
-      "https://images.unsplash.com/photo-1666281269793-da06484657e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb24lMjB0ZXh0Ym9va3xlbnwxfHx8fDE3NjI0ODk2ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaApITkrpJwbc0RlokTr7zedmgk2sP1CB5QQ&s",
     promotion: true,
   },
   {
     id: "4",
-    title: "ประวัติศาสตร์ไทยสมัยสุโขทัย",
-    author: "รศ.ดร.พิมพ์ใจ รักไทย",
-    category: "959 - ประวัติศาสตร์เอเชีย",
+    title: "การวัดด้านจิตพิสัย",
+    author: "ล้วน สายยศ,อังคณา สายยศ",
+    category: "158",
     image:
-      "https://images.unsplash.com/photo-1633580969828-e069e568928f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3ZlbCUyMGJvb2slMjBjb3ZlcnxlbnwxfHx8fDE3NjI0NDk3MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://library.pptn.ac.th/cover/9789748269290.jpg",
     promotion: true,
   },
   {
     id: "5",
-    title: "AI และอนาคตของมนุษยชาติ",
-    author: "ดร.ประยุทธ อัจฉริยะ",
-    category: "006 - ปัญญาประดิษฐ์",
+    title: "30 ชั่วโมงพูดภาษาอังกฤษได้ง่ายเว่อร์",
+    author: "อังกฤษได้ง่ายเว่อร์	ครูกวาง ยุวนาฏ&พี่ตั๊กกี้ นารีรัตน์",
+    category: "440-489",
     image:
-      "https://images.unsplash.com/photo-1761319115499-872737b89e44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib29rJTIwc3BpbmUlMjBsaWJyYXJ5fGVufDF8fHx8MTc2MjQ4OTY4Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://api.chulabook.com/images/pid-29795.jpg",
     promotion: true,
   },
   {
     id: "6",
-    title: "เศรษฐศาสตร์พฤติกรรม",
-    author: "ผศ.สมพร เศรษฐกุล",
-    category: "330 - เศรษฐศาสตร์",
+    title: "ชิมไป บ่นไป",
+    author: "สมัคร สุนทรเวช",
+    category: "641.57-641.7",
     image:
-      "https://images.unsplash.com/photo-1744693660970-3517f524fb28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib29rJTIwY292ZXIlMjBjb2xvcmZ1bHxlbnwxfHx8fDE3NjIzOTk3ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://inwfile.com/s-fq/hwwuqg.jpg",
     promotion: true,
   },
 ];
@@ -90,56 +90,56 @@ const recommendedBooks = [
 const newBooks = [
   {
     id: "7",
-    title: "เศรษฐศาสตร์พฤติกรรม",
-    author: "ผศ.สมพร เศรษฐกุล",
-    category: "330 - เศรษฐศาสตร์",
+    title: "การจัดการโรงแรม",
+    author: "สุพัตรา สร้อยเพ็ชร์",
+    category: "647-649",
     image:
-      "https://images.unsplash.com/photo-1744693660970-3517f524fb28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib29rJTIwY292ZXIlMjBjb2xvcmZ1bHxlbnwxfHx8fDE3NjIzOTk3ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_R-aB4GhRw9RyQ2S-kOoAcJW5_WLZ0lJ9Jw&s",
     promotion: true,
   },
   {
     id: "8",
-    title: "การเขียนเชิงสร้างสรรค์",
-    author: "อ.สายชล รัตนพันธ์",
-    category: "808 - การเรียบเรียง",
+    title: "กฎการทำงานของgoogle",
+    author: "-",
+    category: "658.1-658.3",
     image:
-      "https://images.unsplash.com/photo-1758796629109-4f38e9374f45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib29rJTIwY292ZXIlMjBmaWN0aW9ufGVufDF8fHx8MTc2MjQzNzIyMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbu4VjiKKJzoCA3NJOg3Vh9MCbaKE9cOYS-w&s",
     promotion: true,
   },
   {
     id: "9",
-    title: "เคมีอินทรีย์ยุคใหม่",
-    author: "รศ.ดร.วิไล เคมีศาสตร์",
-    category: "547 - เคมีอินทรีย์",
+    title: "เตรียมพร้อมสอบจีน",
+    author: "ดร.ภูรดา เซี่ยงจ๊ง",
+    category: "495.6-495.65",
     image:
-      "https://images.unsplash.com/photo-1666281269793-da06484657e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb24lMjB0ZXh0Ym9vayxfGVufDF8fHx8MTc2MjQ4OTY4N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://images.www.jamsai.com/Ganbatte/9786164940505.webp",
     promotion: true,
   },
   {
     id: "10",
-    title: "ภาษาอังกฤษเพื่อการสื่อสาร",
-    author: "อ.จิราพร ภาษาวิทย์",
-    category: "428 - การใช้ภาษาอังกฤษ",
+    title: "ไอน์สไตน์ถามพระพุทธเจ้าตอบ",
+    author: "ศุภวรรณ พัฒนพงศ์",
+    category: "240-290",
     image:
-      "https://images.unsplash.com/photo-1633580969828-e069e568928f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3ZlbCUyMGJvb2slMjBjb3ZlcnxlbnwxfHx8fDE3NjI0NDk3MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyJ6ALASsYKKu_uCzkixi1bR-G3LlRo3adSw&s",
     promotion: true,
   },
   {
     id: "11",
-    title: "ศิลปะการถ่ายภาพ",
-    author: "ดร.วิชัย มัลลิกา",
-    category: "770 - ศิลปะการถ่ายภาพ",
+    title: "The secret language of color",
+    author: "Joann eckstut and Arielle eckstut",
+    category: "677-679",
     image:
-      "https://images.unsplash.com/photo-1725869973689-425c74f79a48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZXh0Ym9vayUyMHNjaWVuY2V8ZW58MXx8fHwxNzYyNDI1NjgzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwRxbyH0w-BLftOlRJNRmxgmX4BC8RdIBNuQ&s",
     promotion: true,
   },
   {
     id: "12",
-    title: "วิทยาศาสตร์กับชีวิต",
-    author: "ผศ.ดร.สมศักดิ์ วิทยากร",
-    category: "500 - วิทยาศาสตร์",
+    title: "หยั่งรู้ใจคนในทุกสถานการณ์",
+    author: "Mr.Speaker",
+    category: "158.1-158.5",
     image:
-      "https://images.unsplash.com/photo-1761319115499-872737b89e44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib29rJTIwc3BpbmUlMjBsaWJyYXJ5fGVufDF8fHx8MTc2MjQ4OTY4Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      "https://cdn-local.mebmarket.com/meb/server1/188993/Thumbnail/book_detail_large.gif?2",
     promotion: true,
   },
 ];
@@ -231,7 +231,7 @@ function BookGrid({ title, books }: BookGridProps) {
                   fontWeight: 600,
                 }}
               >
-                หมวด: {book.category}
+                ชั้นวาง: {book.category}
               </p>
             </div>
           </Link>

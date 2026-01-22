@@ -1,91 +1,238 @@
-import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, BookOpen, User, Calendar, Hash, Tag } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { Button } from './ui/button';
+import { useParams, Link } from "react-router-dom";
+import { ArrowLeft, BookOpen, User, Calendar, Hash, Tag } from "lucide-react";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { Button } from "./ui/button";
 
-// Mock data - ในระบบจริงจะดึงจาก API
 const bookDatabase = {
-  '1': {
-    id: '1',
-    title: 'หลักการเขียนโปรแกรม Python',
-    author: 'ดร.สมชาย วงศ์ใหญ่',
-    publisher: 'สำนักพิมพ์ SE-ED',
-    year: '2567',
-    isbn: '978-616-08-5432-1',
-    category: '005.13 - คอมพิวเตอร์โปรแกรมมิ่ง',
-    pages: '456',
-    description: 'หนังสือเรียนรู้การเขียนโปรแกรมด้วยภาษา Python ตั้งแต่พื้นฐานจนถึงขั้นสูง เหมาะสำหรับผู้เริ่มต้นและผู้ที่ต้องการพัฒนาทักษะการเขียนโปรแกรม ครอบคลุมเนื้อหาการใช้งาน Library ต่างๆ และการพัฒนาโปรเจกต์จริง',
-    image: 'https://images.unsplash.com/photo-1725869973689-425c74f79a48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZXh0Ym9vayUyMHNjaWVuY2V8ZW58MXx8fHwxNzYyNDI1NjgzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    status: 'available',
-    location: 'ชั้น 2 ห้องสมุด - หมวด 005',
+  "1": {
+    id: "1",
+    title: "วันเวลาใน 4 ทวีป",
+    author: "เขมานันทะ",
+    publisher: "พิมพ์คำ",
+    year: "2548",
+    isbn: "9789749275691",
+    pages: "384",
+    category: "150-152.41",
+    description:
+      "บันทึกการเดินทางและเรื่องเล่าจากหลายทวีป ถ่ายทอดมุมมอง วัฒนธรรม และประสบการณ์ของผู้เขียนในแต่ละช่วงเวลา",
+    image: "https://satapornbooks.com/file/product-inside/44y2a4p27414q5o4p5",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 150-152.41",
+    copies: 1,
+    available: 1,
+    promotion: true,
+  },
+
+  "2": {
+    id: "2",
+    title: "ทำทุกอย่างให้สุด Ritz",
+    author: "นศ.พ.เรืองฤทธิ์ ศิริพานิช",
+    publisher: "เคล็ดไทย",
+    year: "2559",
+    isbn: "9786169272700",
+    category: "170-190",
+    description:
+      "หนังสือแนวแรงบันดาลใจ/ประสบการณ์ชีวิต ถ่ายทอดแนวคิดและการใช้ชีวิตให้เต็มที่ในแบบของผู้เขียน",
+    image:
+      "https://static.getbookie.com/product/image/2024/01/full/1705042751-1778.9873046875-bc059df3-b649-40c4-86b4-fd7d119346d7.jpeg",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 170-190",
     copies: 3,
-    available: 2
+    available: 2,
+    promotion: true,
   },
-  '2': {
-    id: '2',
-    title: 'วรรณคดีไทยสมัยอยุธยา',
-    author: 'ผศ.สมหญิง ใจดี',
-    publisher: 'มหาวิทยาลัยธรรมศาสตร์',
-    year: '2566',
-    isbn: '978-616-08-6789-3',
-    category: '895.91 - วรรณคดีไทย',
-    pages: '324',
-    description: 'ศึกษาวรรณคดีไทยในสมัยอยุธยา วิเคราะห์บทประพันธ์สำคัญต่างๆ และความสัมพันธ์กับสังคมไทยในยุคนั้น เหมาะสำหรับนักเรียนและผู้สนใจวรรณคดีไทย',
-    image: 'https://images.unsplash.com/photo-1758796629109-4f38e9374f45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib29rJTIwY292ZXIlMjBmaWN0aW9ufGVufDF8fHx8MTc2MjQzNzIyMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    status: 'available',
-    location: 'ช��้น 3 ห้องสมุด - หมวด 895',
-    copies: 2,
-    available: 1
-  },
-  '3': {
-    id: '3',
-    title: 'คณิตศาสตร์เพื่อการแข่งขัน',
-    author: 'อ.วิชัย สมบูรณ์',
-    publisher: 'สสวท.',
-    year: '2567',
-    isbn: '978-616-08-4321-9',
-    category: '510 - คณิตศาสตร์',
-    pages: '512',
-    description: 'รวมโจทย์และเทคนิคการแก้ปัญหาคณิตศาสตร์เพื่อการแข่งขัน ครอบคลุมทุกระดับชั้น พร้อมเฉลยละเอียด เหมาะสำหรับการเตรียมตัวสอบแข่งขัน',
-    image: 'https://images.unsplash.com/photo-1666281269793-da06484657e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb24lMjB0ZXh0Ym9va3xlbnwxfHx8fDE3NjI0ODk2ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    status: 'available',
-    location: 'ชั้น 2 ห้องสมุด - หมวด 510',
-    copies: 4,
-    available: 3
-  },
-  '4': {
-    id: '4',
-    title: 'ประวัติศาสตร์ไทยสมัยสุโขทัย',
-    author: 'รศ.ดร.พิมพใจ รักไทย',
-    publisher: 'จุฬาลงกรณ์มหาวิทยาลัย',
-    year: '2566',
-    isbn: '978-616-08-7654-2',
-    category: '959.3 - ประวัติศาสตร์ไทย',
-    pages: '398',
-    description: 'ศึกษาประวัติศาสตร์ไทยในสมัยสุโขทัย ครอบคลุมเหตุการณ์สำคัญ บุคคลสำคัญ และมรดกทางวัฒนธรรมที่ตกทอดมาจนถึงปัจจุบัน',
-    image: 'https://images.unsplash.com/photo-1633580969828-e069e568928f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3ZlbCUyMGJvb2slMjBjb3ZlcnxlbnwxfHx8fDE3NjI0NDk3MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    status: 'available',
-    location: 'ชั้น 3 ห้องสมุด - หมวด 959',
-    copies: 2,
-    available: 2
-  },
-  '5': {
-    id: '5',
-    title: 'AI และอนาคตของมนุษยชาติ',
-    author: 'ดร.ประยุทธ อัจฉริยะ',
-    publisher: 'สำนักพิมพ์มติชน',
-    year: '2567',
-    isbn: '978-616-08-8765-4',
-    category: '006.3 - ปัญญาประดิษฐ์',
-    pages: '428',
-    description: 'วิเคราะห์อนาคตของ���นุษยชาติในยุค AI ครอบคลุมทั้งโอกาสและความท้าทาย พร้อมแนวทางการปรับตัวและการใช้ประโยชน์จาก AI อย่างสร้างสรรค์',
-    image: 'https://images.unsplash.com/photo-1761319115499-872737b89e44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib29rJTIwc3BpbmUlMjBsaWJyYXJ5fGVufDF8fHx8MTc2MjQ4OTY4Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    status: 'borrowed',
-    location: 'ชั้น 2 ห้องสมุด - หมวด 006',
+
+  "3": {
+    id: "3",
+    title: "Short Note ภาษาไทย ติวให้ได้เต็ม",
+    author: "นิทัศย์ ยศธสาร (อ.แจ๊กกี้)",
+    publisher: "MIS (เอ็มไอเอส)",
+    year: "2562",
+    isbn: "9786164301795",
+    pages: "304",
+    category: "495.91",
+    description:
+      "สรุปภาษาไทยแบบ Short Note เน้นจุดที่ออกสอบบ่อย พร้อมเทคนิคจำและแนวข้อสอบเพื่อเตรียมสอบ",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaApITkrpJwbc0RlokTr7zedmgk2sP1CB5QQ&s",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 495.91",
     copies: 3,
-    available: 0
-  }
-};
+    available: 2,
+    promotion: true,
+  },
+
+  "4": {
+    id: "4",
+    title: "การวัดด้านจิตพิสัย",
+    author: "ล้วน สายยศ, อังคณา สายยศ",
+    isbn: "9748269299",
+    pages: "331",
+    category: "158",
+    description:
+      "เนื้อหาเกี่ยวกับการวัด/ประเมินผลด้านจิตพิสัย (Affective domain) ใช้เป็นแนวทางในการสร้างแบบวัดและประเมินผล",
+    image: "https://library.pptn.ac.th/cover/9789748269290.jpg",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 158",
+    copies: 2,
+    available: 1,
+    promotion: true,
+  },
+
+  "5": {
+    id: "5",
+    title: "30 ชั่วโมงพูดภาษาอังกฤษได้ง่ายเว่อร์",
+    author: "ยุวนาฏ คุ้มขาว (ครูกวาง) และคณะ",
+    year: "2563",
+    isbn: "8858757411837",
+    pages: "384",
+    category: "440-489",
+    description:
+      "แนวฝึกพูดอังกฤษแบบเป็นขั้นตอน เน้นประโยคใช้จริงและฝึกสื่อสารให้คล่อง เหมาะกับผู้เริ่มต้น",
+    image: "https://api.chulabook.com/images/pid-29795.jpg",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 440-489",
+    copies: 3,
+    available: 3,
+    promotion: true,
+  },
+
+  "6": {
+    id: "6",
+    title: "ชิมไป บ่นไป",
+    author: "สมัคร สุนทรเวช",
+    publisher: "อมรินทร์ บุ๊ค เซ็นเตอร์",
+    year: "2543",
+    isbn: "9742729204",
+    pages: "204",
+    category: "641.57-641.7",
+    description:
+      "เรื่องเล่าด้านอาหาร/การชิมแบบคอลัมน์ อ่านสนุก มีมุมมองและความเห็นสไตล์ผู้เขียน",
+    image: "https://inwfile.com/s-fq/hwwuqg.jpg",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 641.57-641.7",
+    copies: 2,
+    available: 1,
+    promotion: true,
+  },
+
+  "7": {
+    id: "7",
+    title: "การจัดการโรงแรม",
+    author: "สุพัตรา สร้อยเพ็ชร์",
+    publisher: "โรงพิมพ์มหาวิทยาลัยขอนแก่น",
+    year: "2553",
+    isbn: "9786162230233",
+    pages: "329",
+    category: "647-649",
+    description:
+      "ตำรา Hotel Management ครอบคลุมงานบริหารจัดการโรงแรม โครงสร้างงานบริการ และการดำเนินงานสำคัญในธุรกิจโรงแรม",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_R-aB4GhRw9RyQ2S-kOoAcJW5_WLZ0lJ9Jw&s",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 647-649",
+    copies: 3,
+    available: 2,
+    promotion: true,
+  },
+
+  "8": {
+    id: "8",
+    title: "กฎการทำงานของgoogle",
+    author: "Laszlo Bock",
+    publisher: "วีเลิร์น",
+    year: "2562",
+    isbn: "9786162873041",
+    pages: "464",
+    category: "658.1-658.3",
+    description:
+      "Work Rules! แนวคิดการบริหารคนและวัฒนธรรมองค์กรจากประสบการณ์ทีม People Operations ของ Google",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbu4VjiKKJzoCA3NJOg3Vh9MCbaKE9cOYS-w&s",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 658.1-658.3",
+    copies: 2,
+    available: 2,
+    promotion: true,
+  },
+
+  "9": {
+    id: "9",
+    title: "เตรียมพร้อมสอบจีน",
+    author: "ผศ.ดร.ภูรดา เซี่ยงจ๊ง",
+    isbn: "9786164940505",
+    pages: "264",
+    category: "495.6-495.65",
+    description:
+      "สรุปไวยากรณ์จีน+คำศัพท์ พร้อมแนวข้อสอบจำนวนมากและเฉลยละเอียด สำหรับเตรียมสอบเข้ามหาวิทยาลัย/TCAS",
+    image: "https://images.www.jamsai.com/Ganbatte/9786164940505.webp",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 495.6-495.65",
+    copies: 3,
+    available: 2,
+    promotion: true,
+  },
+
+  "10": {
+    id: "10",
+    title: "ไอน์สไตน์ถามพระพุทธเจ้าตอบ",
+    author: "ศุภวรรณ พิพัฒพรรณวงศ์ กรีน",
+    publisher: "Free mind",
+    year: "2549",
+    isbn: "9786167115146",
+    pages: "236",
+    category: "240-290",
+    description:
+      "ชวนคิดเชิงธรรมะผ่านมุมมองแบบวิทยาศาสตร์ ตั้งคำถามและอธิบายหลักธรรมให้เข้าใจง่ายขึ้น",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyJ6ALASsYKKu_uCzkixi1bR-G3LlRo3adSw&s",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 240-290",
+    copies: 2,
+    available: 1,
+    promotion: true,
+  },
+
+  "11": {
+    id: "11",
+    title: "The secret language of color",
+    author: "Joann Eckstut and Arielle Eckstut",
+    publisher: "Black Dog & Leventhal",
+    year: "2013",
+    isbn: "9781603763523",
+    pages: "240",
+    category: "677-679",
+    description:
+      "สำรวจสีในมุมวิทยาศาสตร์ ธรรมชาติ ประวัติศาสตร์ และวัฒนธรรม อธิบายความหมาย/ผลของสีต่อมนุษย์และโลก",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwRxbyH0w-BLftOlRJNRmxgmX4BC8RdIBNuQ&s",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 677-679",
+    copies: 2,
+    available: 2,
+    promotion: true,
+  },
+
+  "12": {
+    id: "12",
+    title: "หยั่งรู้ใจคนในทุกสถานการณ์",
+    author: "Mr.Speaker",
+    publisher: "7D Book",
+    year: "2565",
+    isbn: "9786162759796",
+    pages: "248",
+    category: "158.1-158.5",
+    description:
+      "เทคนิคการสื่อสาร/การโน้มน้าว เพื่อเข้าใจคนและจัดการสถานการณ์ต่าง ๆ ให้ได้ผลลัพธ์ที่ต้องการ",
+    image:
+      "https://cdn-local.mebmarket.com/meb/server1/188993/Thumbnail/book_detail_large.gif?2",
+    status: "available",
+    location: "ห้องสมุด - ชั้นวาง 158.1-158.5",
+    copies: 3,
+    available: 1,
+    promotion: true,
+  },
+} as const;
 
 export function BookDetailPage() {
   const { id } = useParams();
@@ -112,7 +259,10 @@ export function BookDetailPage() {
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Back Button */}
         <Link to="/">
-          <Button variant="ghost" className="mb-6 text-orange-600 hover:text-orange-700 hover:bg-orange-50">
+          <Button
+            variant="ghost"
+            className="mb-6 text-orange-600 hover:text-orange-700 hover:bg-orange-50"
+          >
             <ArrowLeft className="w-4 h-4 mr-2" />
             กลับหน้าหลัก
           </Button>
@@ -120,7 +270,7 @@ export function BookDetailPage() {
 
         <div className="bg-card rounded-lg shadow-sm p-8 border border-border/50">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Book Cover */}
+            {/* ✅ Book Cover */}
             <div>
               <div className="aspect-[2/3] bg-muted rounded-lg overflow-hidden shadow-md mb-4">
                 <ImageWithFallback
@@ -129,49 +279,26 @@ export function BookDetailPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              
-              {/* Status Badge */}
-              <div className="text-center mb-4">
-                {book.status === 'available' ? (
-                  <span className="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm">
-                    ✓ พร้อมให้บริการ ({book.available}/{book.copies} เล่ม)
-                  </span>
-                ) : (
-                  <span className="inline-block bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm">
-                    ✗ ถูกยืมหมดแล้ว
-                  </span>
-                )}
-              </div>
 
-              {/* Action Buttons */}
-              <div className="space-y-2">
-                <Link to="/borrow" className="block">
-                  <Button 
-                    className="w-full bg-orange-600 hover:bg-orange-700"
-                    disabled={book.status !== 'available'}
-                  >
-                    จองหนังสือ
-                  </Button>
-                </Link>
-                <Button variant="outline" className="w-full">
-                  เพิ่มในรายการโปรด
-                </Button>
-              </div>
+              {/* Action Buttons (ถ้ายังไม่มีปุ่มก็ปล่อยว่างได้) */}
+              <div className="space-y-2">{/* ใส่ปุ่มเพิ่มทีหลังได้ */}</div>
             </div>
 
-            {/* Book Details */}
+            {/* ✅ Book Details */}
             <div className="md:col-span-2">
               <h1 className="text-3xl mb-2 text-gray-900">{book.title}</h1>
               <p className="text-xl text-gray-600 mb-6">{book.author}</p>
 
               <div className="prose max-w-none mb-8">
-                <p className="text-gray-700 leading-relaxed">{book.description}</p>
+                <p className="text-gray-700 leading-relaxed">
+                  {book.description}
+                </p>
               </div>
 
               {/* Book Information */}
               <div className="border-t border-gray-200 pt-6">
                 <h2 className="text-xl mb-4 text-gray-900">รายละเอียดหนังสือ</h2>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-start gap-3">
                     <User className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
@@ -185,7 +312,9 @@ export function BookDetailPage() {
                     <BookOpen className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500">สำนักพิมพ์</p>
-                      <p className="text-gray-900">{book.publisher}</p>
+                      <p className="text-gray-900">
+                        {"publisher" in book ? book.publisher : "-"}
+                      </p>
                     </div>
                   </div>
 
@@ -193,7 +322,9 @@ export function BookDetailPage() {
                     <Calendar className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500">ปีที่พิมพ์</p>
-                      <p className="text-gray-900">{book.year}</p>
+                      <p className="text-gray-900">
+                        {"year" in book ? book.year : "-"}
+                      </p>
                     </div>
                   </div>
 
@@ -208,7 +339,7 @@ export function BookDetailPage() {
                   <div className="flex items-start gap-3">
                     <Tag className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="text-sm text-gray-500">หมวดหมู่</p>
+                      <p className="text-sm text-gray-500">ชั้นวาง</p>
                       <p className="text-gray-900">{book.category}</p>
                     </div>
                   </div>
@@ -217,7 +348,9 @@ export function BookDetailPage() {
                     <BookOpen className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500">จำนวนหน้า</p>
-                      <p className="text-gray-900">{book.pages} หน้า</p>
+                      <p className="text-gray-900">
+                        {"pages" in book ? `${book.pages} หน้า` : "-"}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -229,7 +362,9 @@ export function BookDetailPage() {
                 </div>
               </div>
             </div>
+            {/* ✅ ปิด md:col-span-2 */}
           </div>
+          {/* ✅ ปิด grid */}
         </div>
       </div>
     </div>
